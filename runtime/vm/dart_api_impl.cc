@@ -4,6 +4,7 @@
 
 #include "include/dart_api.h"
 #include "include/dart_native_api.h"
+#include "include/dart_wdext_api.h"
 
 #include <memory>
 #include <utility>
@@ -7058,6 +7059,18 @@ DART_EXPORT char* Dart_GetUserTagLabel(Dart_Handle user_tag) {
   }
   const String& label = String::Handle(Z, tag.label());
   return Utils::StrDup(label.ToCString());
+}
+
+DART_EXPORT Dart_IsolateMemoryInfo* Dart_QueryMainIsolateMemory() {
+  auto isolate_group = Thread::Current()->isolate_group();
+  Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
+  return &info;
+}
+
+DART_EXPORT Dart_IsolateMemoryInfo* Dart_QuerySystemIsolateMemory() {
+  auto isolate_group = Thread::Current()->isolate_group();
+  Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
+  return &info;
 }
 
 }  // namespace dart
