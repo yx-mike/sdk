@@ -2,9 +2,10 @@
 
 'dart_git': 'https://dart.googlesource.com',
 
+'dart_revision': '3300f32fdc5432f40bc00f4179529cbd7449c93a',
+
 When updating the Dart revision, ensure that all entries that are dependencies of Dart are also updated to match the entries in the Dart SDK's DEPS file for that revision of Dart. The DEPS file for Dart is: https://github.com/dart-lang/sdk/blob/master/DEPS.
  You can use //tools/dart/create_updated_flutter_deps.py to produce updated revision list of existing dependencies.
-'dart_revision': '3300f32fdc5432f40bc00f4179529cbd7449c93a',
 
 # Dart
 
