@@ -7061,16 +7061,16 @@ DART_EXPORT char* Dart_GetUserTagLabel(Dart_Handle user_tag) {
   return Utils::StrDup(label.ToCString());
 }
 
-DART_EXPORT Dart_IsolateMemoryInfo* Dart_QueryMainIsolateMemory() {
-  auto isolate_group = Thread::Current()->isolate_group();
+DART_EXPORT Dart_IsolateMemoryInfo Dart_QueryMainIsolateMemory() {
+  // auto isolate_group = Thread::Current()->isolate_group();
   Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
-  return &info;
+  return info;
 }
 
-DART_EXPORT Dart_IsolateMemoryInfo* Dart_QuerySystemIsolateMemory() {
-  auto isolate_group = Thread::Current()->isolate_group();
+DART_EXPORT Dart_IsolateMemoryInfo Dart_QuerySystemIsolateMemory() {
+  // auto isolate_group = Thread::Current()->isolate_group();
   Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
-  return &info;
+  return info;
 }
 
 }  // namespace dart

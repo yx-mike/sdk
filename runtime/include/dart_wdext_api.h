@@ -28,11 +28,11 @@ typedef struct {
 /**
  * 读取dart使用内存的情况
  */
-DART_EXPORT Dart_IsolateMemoryInfo* Dart_QueryMainIsolateMemory();
+DART_EXPORT Dart_IsolateMemoryInfo Dart_QueryMainIsolateMemory();
 
 /**
  * 读取dart使用内存的情况
  */
-DART_EXPORT Dart_IsolateMemoryInfo* Dart_QuerySystemIsolateMemory();
+DART_EXPORT Dart_IsolateMemoryInfo Dart_QuerySystemIsolateMemory();
 
 #endif /* INCLUDE_DART_WDEXT_API_H_ */ /* NOLINT */
