@@ -1,3 +1,11 @@
+# Engine对于dart sdk的依赖是在src/flutter/DEPS中，
+
+'dart_git': 'https://dart.googlesource.com',
+
+When updating the Dart revision, ensure that all entries that are dependencies of Dart are also updated to match the entries in the Dart SDK's DEPS file for that revision of Dart. The DEPS file for Dart is: https://github.com/dart-lang/sdk/blob/master/DEPS.
+ You can use //tools/dart/create_updated_flutter_deps.py to produce updated revision list of existing dependencies.
+'dart_revision': '3300f32fdc5432f40bc00f4179529cbd7449c93a',
+
 # Dart
 
 ## A client-optimized language for fast apps on any platform

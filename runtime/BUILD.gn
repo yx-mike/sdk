@@ -238,6 +238,7 @@ source_set("dart_api") {
     "include/dart_native_api.h",
     "include/dart_tools_api.h",
     "include/dart_version.h",
+    "include/dart_wdext_api.h",
     "include/internal/dart_api_dl_impl.h",
   ]
 }
@@ -282,6 +283,7 @@ library_for_all_configs("libdart") {
     "include/dart_api.h",
     "include/dart_native_api.h",
     "include/dart_tools_api.h",
+    "include/dart_wdext_api.h",
     "vm/dart_api_impl.cc",
     "vm/native_api_impl.cc",
     "vm/version.h",
