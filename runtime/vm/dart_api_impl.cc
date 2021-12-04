@@ -8,6 +8,7 @@
 
 #include <memory>
 #include <utility>
+#include <string>
 
 #include "lib/stacktrace.h"
 #include "platform/assert.h"
@@ -26,6 +27,7 @@
 #include "vm/exceptions.h"
 #include "vm/flags.h"
 #include "vm/growable_array.h"
+#include "vm/heap/heap.h"
 #include "vm/heap/verifier.h"
 #include "vm/image_snapshot.h"
 #include "vm/isolate_reload.h"
@@ -7061,16 +7063,41 @@ DART_EXPORT char* Dart_GetUserTagLabel(Dart_Handle user_tag) {
   return Utils::StrDup(label.ToCString());
 }
 
-DART_EXPORT Dart_IsolateMemoryInfo Dart_QueryMainIsolateMemory() {
-  // auto isolate_group = Thread::Current()->isolate_group();
-  Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
-  return info;
+DART_EXPORT const char* Dart_QueryMainIsolateMemory() {
+  auto isolate_group = Thread::Current()->isolate_group();
+  char* name = isolate_group->source()->name;
+  int64_t used = isolate_group->heap()->TotalUsedInWords();
+  int64_t capacity = isolate_group->heap()->TotalCapacityInWords();
+  int64_t external = isolate_group->heap()->TotalExternalInWords();
+
+  std::string name_string = std::string(name);
+  std::string used_string = std::to_string(used);
+  std::string capacity_string = std::to_string(capacity);
+  std::string external_string = std::to_string(external);
+
+  std::string result = name_string + "," + used_string + "," + capacity_string + "," + external_string;
+  const char* result_cs = result.c_str();
+  return result_cs;
 }
 
-DART_EXPORT Dart_IsolateMemoryInfo Dart_QuerySystemIsolateMemory() {
-  // auto isolate_group = Thread::Current()->isolate_group();
-  Dart_IsolateMemoryInfo info = {NULL, 0, 0, 0};
-  return info;
+DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
+  int64_t vm_used = 0;
+  int64_t vm_capacity = 0;
+  int64_t vm_external = 0;
+  IsolateGroup::ForEach([&vm_used, &vm_capacity, &vm_external](IsolateGroup* isolate_group) {
+    vm_used += isolate_group->heap()->TotalUsedInWords();
+    vm_capacity += isolate_group->heap()->TotalCapacityInWords();
+    vm_external += isolate_group->heap()->TotalExternalInWords();
+  });
+
+  std::string name_string = "flutter";
+  std::string used_string = std::to_string(vm_used);
+  std::string capacity_string = std::to_string(vm_capacity);
+  std::string external_string = std::to_string(vm_external);
+
+  std::string result = name_string + "," + used_string + "," + capacity_string + "," + external_string;
+  const char* result_cs = result.c_str();
+  return result_cs;
 }
 
 }  // namespace dart
