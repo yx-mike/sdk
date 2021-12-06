@@ -7076,7 +7076,12 @@ DART_EXPORT const char* Dart_QueryMainIsolateMemory() {
   std::string external_string = std::to_string(external);
 
   std::string result = name_string + "," + used_string + "," + capacity_string + "," + external_string;
-  const char* result_cs = result.c_str();
+
+  int len = result.length();
+  char* character = new char[len + 1];
+  strcpy(character, result.c_str());
+
+  const char* result_cs = character;
   return result_cs;
 }
 
@@ -7096,7 +7101,12 @@ DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
   std::string external_string = std::to_string(vm_external);
 
   std::string result = name_string + "," + used_string + "," + capacity_string + "," + external_string;
-  const char* result_cs = result.c_str();
+
+  int len = result.length();
+  char* character = new char[len + 1];
+  strcpy(character, result.c_str());
+  
+  const char* result_cs = character;
   return result_cs;
 }
 
