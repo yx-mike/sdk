@@ -1,4 +1,5 @@
 # 修改引擎代码的时候，如果需要修改dart-sdk或者vm下面的代码，记得在这个git修改，记得加一下GN和gni配置；注意一下git shor hash校验的问题；
+
 # Engine对于dart sdk的依赖是在src/flutter/DEPS中，
 
 'dart_git': 'https://dart.googlesource.com',

@@ -7066,9 +7066,9 @@ DART_EXPORT char* Dart_GetUserTagLabel(Dart_Handle user_tag) {
 DART_EXPORT const char* Dart_QueryMainIsolateMemory() {
   auto isolate_group = Thread::Current()->isolate_group();
   char* name = isolate_group->source()->name;
-  int64_t used = isolate_group->heap()->TotalUsedInWords();
-  int64_t capacity = isolate_group->heap()->TotalCapacityInWords();
-  int64_t external = isolate_group->heap()->TotalExternalInWords();
+  int64_t used = isolate_group->heap()->TotalUsedInWords() * kWordSize;
+  int64_t capacity = isolate_group->heap()->TotalCapacityInWords() * kWordSize;
+  int64_t external = isolate_group->heap()->TotalExternalInWords() * kWordSize;
 
   std::string name_string = std::string(name);
   std::string used_string = std::to_string(used);
@@ -7090,9 +7090,9 @@ DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
   int64_t vm_capacity = 0;
   int64_t vm_external = 0;
   IsolateGroup::ForEach([&vm_used, &vm_capacity, &vm_external](IsolateGroup* isolate_group) {
-    vm_used += isolate_group->heap()->TotalUsedInWords();
-    vm_capacity += isolate_group->heap()->TotalCapacityInWords();
-    vm_external += isolate_group->heap()->TotalExternalInWords();
+    vm_used += isolate_group->heap()->TotalUsedInWords() * kWordSize;
+    vm_capacity += isolate_group->heap()->TotalCapacityInWords() * kWordSize;
+    vm_external += isolate_group->heap()->TotalExternalInWords() * kWordSize;
   });
 
   std::string name_string = "flutter";
