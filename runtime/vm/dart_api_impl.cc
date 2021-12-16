@@ -7112,7 +7112,9 @@ DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
 
 DART_EXPORT void Dart_FullGCMainIsolate() {
   auto isolate_group = Thread::Current()->isolate_group();
+#if !defined(PRODUCT)
   isolate_group->UpdateLastAllocationProfileGCTimestamp();
+#endif  // !defined(PRODUCT)
   isolate_group->heap()->CollectAllGarbage();
 }
 
