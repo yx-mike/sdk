@@ -7110,4 +7110,10 @@ DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
   return result_cs;
 }
 
+DART_EXPORT void Dart_FullGCMainIsolate() {
+  auto isolate_group = Thread::Current()->isolate_group();
+  isolate_group->UpdateLastAllocationProfileGCTimestamp();
+  isolate_group->heap()->CollectAllGarbage();
+}
+
 }  // namespace dart

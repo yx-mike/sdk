@@ -35,4 +35,9 @@ DART_EXPORT const char* Dart_QueryMainIsolateMemory();
  */
 DART_EXPORT const char* Dart_QueryAllIsolateMemory();
 
+/**
+ * gc
+ */
+DART_EXPORT void Dart_FullGCMainIsolate();
+
 #endif /* INCLUDE_DART_WDEXT_API_H_ */ /* NOLINT */
