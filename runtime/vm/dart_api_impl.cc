@@ -7063,7 +7063,7 @@ DART_EXPORT char* Dart_GetUserTagLabel(Dart_Handle user_tag) {
   return Utils::StrDup(label.ToCString());
 }
 
-DART_EXPORT const char* Dart_QueryMainIsolateMemory() {
+DART_EXPORT char* Dart_QueryMainIsolateMemory() {
   auto isolate_group = Thread::Current()->isolate_group();
   char* name = isolate_group->source()->name;
   int64_t used = isolate_group->heap()->TotalUsedInWords() * kWordSize;
@@ -7081,11 +7081,11 @@ DART_EXPORT const char* Dart_QueryMainIsolateMemory() {
   char* character = new char[len + 1];
   strcpy(character, result.c_str());
 
-  const char* result_cs = character;
-  return result_cs;
+  // const char* result_cs = character;
+  return character;
 }
 
-DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
+DART_EXPORT char* Dart_QueryAllIsolateMemory() {
   int64_t vm_used = 0;
   int64_t vm_capacity = 0;
   int64_t vm_external = 0;
@@ -7106,8 +7106,8 @@ DART_EXPORT const char* Dart_QueryAllIsolateMemory() {
   char* character = new char[len + 1];
   strcpy(character, result.c_str());
   
-  const char* result_cs = character;
-  return result_cs;
+  // const char* result_cs = character;
+  return character;
 }
 
 DART_EXPORT void Dart_FullGCMainIsolate() {

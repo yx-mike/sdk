@@ -28,12 +28,12 @@
 /**
  * 读取dart使用内存的情况
  */
-DART_EXPORT const char* Dart_QueryMainIsolateMemory();
+DART_EXPORT char* Dart_QueryMainIsolateMemory();
 
 /**
  * 读取dart使用内存的情况
  */
-DART_EXPORT const char* Dart_QueryAllIsolateMemory();
+DART_EXPORT char* Dart_QueryAllIsolateMemory();
 
 /**
  * gc
