@@ -537,6 +537,9 @@ class FrontendCompiler implements CompilerInterface {
           sdkRoot.resolve(platformKernelDill)
         ];
       }
+      print('yx02: frontend_server compile!');
+      print('yx02: $_mainSource');
+      print('yx02: sdkRoot=${compilerOptions.sdkRoot} librariesSpecificationUri=${compilerOptions.librariesSpecificationUri} packagesFileUri=${compilerOptions.packagesFileUri} additionalDills=${compilerOptions.additionalDills} sdkSummary=${compilerOptions.sdkSummary} declaredVariables=${compilerOptions.declaredVariables} environmentDefines=${compilerOptions.environmentDefines} currentSdkVersion=${compilerOptions.currentSdkVersion}');
       results = await _runWithPrintRedirection(() => compileToKernel(
           _mainSource, compilerOptions,
           includePlatform: options['link-platform'],
