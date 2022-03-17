@@ -16,16 +16,6 @@
  */
 
 /**
- * 可以参考vm-service的 class MemoryUsage的注释
- */
-//typedef struct {
-//  const char* name;  // isolate name
-//  int64_t heapUsage;  // The current heap memory usage in bytes.
-//  int64_t heapCapacity;  // The total capacity of the heap in bytes.
-//  int64_t externalUsage;  // The amount of non-Dart memory that is retained by Dart objects
-//} Dart_IsolateMemoryInfo;
-
-/**
  * 读取dart使用内存的情况
  */
 DART_EXPORT char* Dart_QueryMainIsolateMemory();

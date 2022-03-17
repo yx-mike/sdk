@@ -15,6 +15,7 @@ copy("copy_headers") {
     "dart_native_api.h",
     "dart_tools_api.h",
     "dart_version.h",
+    "dart_wdext_api.h",
     "internal/dart_api_dl_impl.h",
   ]
 
